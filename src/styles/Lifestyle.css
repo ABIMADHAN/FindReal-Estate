@@ -1,0 +1,170 @@
+/* ============================================================
+   Lifestyle Section
+   ============================================================ */
+.lifestyle {
+  background: var(--ivory);
+  padding: var(--space-2xl) var(--space-md);
+}
+
+.lifestyle__header {
+  max-width: var(--max-content);
+  margin: 0 auto 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+}
+
+.lifestyle__heading {
+  font-family: var(--font-serif);
+  font-size: var(--text-3xl);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--pine);
+  letter-spacing: -0.01em;
+}
+
+.lifestyle__heading em {
+  font-style: italic;
+  color: var(--brass);
+}
+
+.lifestyle__intro {
+  font-size: var(--text-md);
+  font-weight: 300;
+  color: var(--slate);
+  line-height: 1.8;
+}
+
+/* Alternating compositions */
+.lifestyle__compositions {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.lifestyle__item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.lifestyle__item--reversed {
+  direction: rtl;
+}
+
+.lifestyle__item--reversed > * {
+  direction: ltr;
+}
+
+.lifestyle__item-image {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.lifestyle__item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+  transition: transform 0.8s var(--ease-out-expo);
+}
+
+.lifestyle__item:hover .lifestyle__item-image img {
+  transform: scale(1.03);
+}
+
+.lifestyle__item-image-accent {
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+  right: 1rem;
+  bottom: 1rem;
+  border: 1px solid rgba(182, 151, 103, 0.2);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.lifestyle__item--reversed .lifestyle__item-image-accent {
+  top: -1rem;
+  left: 1rem;
+  right: -1rem;
+  bottom: 1rem;
+}
+
+.lifestyle__item-text {
+  padding: 1rem;
+}
+
+.lifestyle__item-num {
+  font-family: var(--font-serif);
+  font-size: 5rem;
+  font-weight: 300;
+  color: rgba(18, 35, 31, 0.07);
+  line-height: 1;
+  margin-bottom: -1.5rem;
+  user-select: none;
+}
+
+.lifestyle__item-label {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lifestyle__item-label::before {
+  content: '';
+  display: block;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--brass);
+}
+
+.lifestyle__item-title {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  font-weight: 300;
+  color: var(--pine);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.lifestyle__item-desc {
+  font-size: var(--text-md);
+  font-weight: 300;
+  color: var(--slate);
+  line-height: 1.8;
+}
+
+@media (max-width: 1024px) {
+  .lifestyle__header {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .lifestyle__item,
+  .lifestyle__item--reversed {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .lifestyle {
+    padding: var(--space-xl) var(--space-sm);
+  }
+
+  .lifestyle__compositions {
+    gap: 4rem;
+  }
+
+  .lifestyle__item-image-accent {
+    display: none;
+  }
+}

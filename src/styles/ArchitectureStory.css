@@ -1,0 +1,200 @@
+/* ============================================================
+   Architecture Story (Pinned Scroll Chapter)
+   ============================================================ */
+.arch-story {
+  position: relative;
+  background: var(--ink);
+}
+
+/* Desktop: pinned scroll experience */
+.arch-story__sticky-container {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Photographic Scenes */
+.arch-story__scene {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+  z-index: 1;
+}
+
+.arch-story__scene.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.arch-story__scene img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center;
+}
+
+.arch-story__scene-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 60%,
+    rgba(18, 35, 31, 0.2) 0%,
+    rgba(18, 35, 31, 0.75) 70%,
+    rgba(18, 35, 31, 0.95) 100%
+  );
+}
+
+/* Caption Area */
+.arch-story__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4rem 3rem;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.arch-story__caption-inner {
+  max-width: 52rem;
+  pointer-events: auto;
+}
+
+.arch-story__chapter-num {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.arch-story__chapter-num::before {
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 1px;
+  background: var(--brass);
+}
+
+.arch-story__headline {
+  font-family: var(--font-serif);
+  font-size: var(--text-3xl);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--ivory);
+  letter-spacing: -0.01em;
+}
+
+.arch-story__body {
+  margin-top: 1.25rem;
+  font-size: var(--text-md);
+  font-weight: 300;
+  color: rgba(247, 244, 236, 0.78);
+  line-height: 1.75;
+  max-width: 38rem;
+}
+
+/* Progress Dots */
+.arch-story__progress {
+  position: absolute;
+  right: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 10;
+}
+
+.arch-story__dot {
+  width: 44px;
+  height: 44px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.arch-story__dot::after {
+  content: '';
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(247, 244, 236, 0.35);
+  transition: all 0.35s ease;
+}
+
+.arch-story__dot.active::after {
+  background: var(--brass);
+  transform: scale(1.6);
+  box-shadow: 0 0 10px var(--brass);
+}
+
+/* Mobile stacked layout */
+@media (max-width: 768px) {
+  .arch-story__sticky-container {
+    display: none;
+  }
+
+  .arch-story__mobile {
+    display: block;
+    padding: var(--space-xl) var(--space-sm);
+  }
+
+  .arch-story__mobile-chapter {
+    margin-bottom: 4rem;
+  }
+
+  .arch-story__mobile-chapter:last-child {
+    margin-bottom: 0;
+  }
+
+  .arch-story__mobile-img {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    margin-bottom: 1.75rem;
+  }
+
+  .arch-story__mobile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .arch-story__mobile-headline {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    font-weight: 300;
+    color: var(--ivory);
+    margin-bottom: 1rem;
+  }
+
+  .arch-story__mobile-body {
+    font-size: var(--text-md);
+    font-weight: 300;
+    color: rgba(247, 244, 236, 0.65);
+    line-height: 1.75;
+  }
+}
+
+@media (min-width: 769px) {
+  .arch-story__mobile {
+    display: none;
+  }
+}
